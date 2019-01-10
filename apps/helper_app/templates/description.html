@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel ='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Job Description</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        text-align: center;
+    }
+    h1, h2, h3{
+        margin: 10px;
+    }
+    .content{
+        background-color: maroon;
+        color: silver;
+    }
+    .jumbotron{
+        background-color:goldenrod;
+        color: black;
+    }
+
+</style>
+<body>
+    <div class ='container'>
+        <div class='jumbotron jumbotron-fluid'>
+            <div class='links'>
+                <a class ='btn btn-dark' href='/dashboard'>Back to All Jobs</a>
+                <a class ='btn btn-danger' href ='/logout'>Logout</a>
+            </div>
+            <div>
+                <h1>Hello {{user.first_name}}!</h1>
+                <h3>View the job details below!</h3>
+            </div>
+        </div>
+       
+        <div class='content'>
+        
+            <h1>{{job.title}}</h1>
+            <p>Description: {{job.description}}</p>
+            <p>Location: {{job.location}}</p>
+            <p>Posted by: {{job.creator.first_name}} {{job.creator.last_name}}</p>
+            <p>Posted on: {{job.created_at}}</p>
+        
+        </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel ='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    div{
+        margin-bottom: 20px;
+    }
+    .wrapper{
+        background-color: royalblue;
+        padding: 10px;
+        text-align: center;
+      
+    }
+    .container{
+        text-align: center;
+       
+        
+    }
+    .table{
+        background-color:whitesmoke;
+    }
+    .table th{
+        background-color: whitesmoke;
+        color: goldenrod;
+    }
+    h2{
+        color: goldenrod;
+    }
+    
+</style>
+
+<body>
+    <div class='wrapper container'>
+            <div class='jumbotron'>
+                <h1 class='display-4'>Hello {{user.first_name}}</h1>
+                <a class ='btn btn-primary' href='/logout'>Logout</a>
+                <a class ='btn btn-primary' href='/add'> Add a New Job! </a>
+              
+            </div>
+            <div class ='container content'>
+                <h2>All the Jobs</h2>
+
+                <table class ='table'>
+                    <tr>
+                        <th><h3>Job</h3></th>
+                        <th><h3>Locations</h3></th>
+                        <th><h3>Actions</h3></th>
+                    </tr>
+                    {%for job in jobs %}
+                        <tr>
+                            <td>{{job.title}}</td>
+                            <td>{{job.location}}</td>
+                            <td><a class ='btn btn-primary' href='/description/{{job.id}}'>View</a>
+                            {%if job in my_jobs%}
+                                <a  class ='btn btn-success' href = '/edit/{{job.id}}'>Edit</a>
+                                <a class = 'btn btn-danger' href = '/delete/{{job.id}}'>Delete</a></td>
+
+                            {%endif%}
+                        </tr>
+                    {%endfor%}
+                </table>
+            </div>
+            <div class='container content'>
+                <table class='table'>
+                    <tr>
+                        <th>Job</th>
+                        <th>Actions</th>
+                    </tr>
+                {%for job in my_jobs%}
+                    <tr>
+                        <td>{{job.title}}</td>
+                        <td><a class ='btn btn-secondary' href='/description/{{job.id}}'>View</a></td>
+        
+                    </tr>
+                {%endfor%}
+                </table>
+            </div>
+    </div>
+</body>
+
+</html>
